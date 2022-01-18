@@ -1,11 +1,11 @@
-// Script executé coté serveur
-import express from "express";
+import express from 'express'
+import incrementrouter from './routes/increment.js'
+import decrementrouter from './routes/decrement.js'
 
-const app = express();
-const port = 3000;
+const app = express()
 
-app.get("/", function (req, res) {
-    
-});
+app.use('/Dec', decrementrouter)
+app.use('/Inc', incrementrouter)
 
-app.listen(port);
+
+app.listen(3000)
