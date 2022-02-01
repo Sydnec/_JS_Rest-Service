@@ -26,26 +26,32 @@ export default class DAO {
     const sql = "ALTER TABLE " + tableName + " " + alter;
     return this.db.run(sql);
   }
-  createTable(tableName, columns) {
+  createTable(tableName) {
     const sql =
-      "CREATE TABLE IF NOT EXISTS " +
-      tableName +
-      "(id INTEGER PRIMARY KEY AUTOINCREMENT," +
-      columns +
-      ")";
-    console.log('Table "' + tableName + '" created');
-    return this.db.run(sql);
+    "CREATE TABLE IF NOT EXISTS " +
+    tableName +
+    "(id INTEGER PRIMARY KEY AUTOINCREMENT)";
+    this.db.run(sql);
+    return "Table "+tableName+"created."
   }
   renameColumn(tableName, lastName, newName) {
-    return this.alterTable(tableName, "RENAME " + lastName + " TO " + newName);
+    this.alterTable(tableName, "RENAME " + lastName + " TO " + newName);
+    return "Table "+lastName+" is now called "+newName+"."
   }
   addColumn(tableName, columnName, columnType) {
-    return this.alterTable(tableName, "ADD " + columnName + " " + columnType);
+    this.alterTable(tableName, "ADD " + columnName + " " + columnType);
+    return "Table "+tableName+" changed."
   }
-  deleteColumn(tableName, columnName) {
-    return this.alterTable(tableName, "DROP " + columnName);
+  dropColumn(tableName, columnName) {
+    this.alterTable(tableName, "DROP " + columnName);
+    return "Table "+tableName+" deleted."
   }
-  select(tableName, selectOption) {
+  select(selectOption, tableName) {
     const sql = "SELECT " + selectOption + " FROM " + tableName;
+    return this.db.run(sql)
+  }
+  insert(tableName, columnName, value){
+    const sql = "INSERT INTO " + tableName+" ("+columnName+") VALUES('"+value+"')"
+    return this.db.run(sql)
   }
 }
