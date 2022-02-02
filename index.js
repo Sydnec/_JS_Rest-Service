@@ -1,8 +1,12 @@
 import express from 'express'
-import DAO from './routes/dao.js'
+import personRouter from './routes/person_router.js'
+import companyRouter from './routes/company_router.js'
 
 const app = express()
+const company = companyRouter()
+const person = personRouter()
 
-app.use('/', DAO)
+app.use('/person/', DAO)
+app.use('/company/', DAO)
 
 app.listen(3000)
