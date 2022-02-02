@@ -1,26 +1,29 @@
 import express from "express";
-import connection from "../DAO/DB_singleton.js";
 import personDAO from "../DAO/person_dao.js";
 
 const router = new express.Router();
-const db = new connection("./db/database.db");
 const personDAO = new personDAO(db);
 
+// Codes : https://www.restapitutorial.com/lessons/httpmethods.html
+
 router.get("/", (req, res) => {
-  res.status(404).send(personDAO.findAll(req.params.tableName));
+  res.status(404).send(personDAO.findAll());
 });
 
 router.get("/:id", (req, res) => {
   const id = parseInt(req.params.id);
-  res.status(200).json(personDAO.find(req.params.tableName, id));
+  res.status(200).json(personDAO.find(id));
 });
 router.put("/:id", (req, res) => {
   const id = parseInt(req.params.id);
-  res.status(200).json(personDAO.update(req.params.tableName, id));
+  res.status(200).json(personDAO.update(id));
+});
+router.post("/", (req, res) => {
+  res.status(200).json(personDAO.add());
 });
 router.delete("/:id", (req, res) => {
   const id = parseInt(req.params.id);
-  res.status(200).json(personDAO.update(req.params.tableName, id));
+  res.status(200).json(personDAO.delete(id));
 });
 
 export default router;

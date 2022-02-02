@@ -1,9 +1,7 @@
 import express from "express";
-import connection from "../DAO/DB_singleton.js";
 import personDAO from "../DAO/person_dao.js";
 
 const router = new express.Router();
-const db = new connection("./db/database.db");
 const personDAO = new personDAO(db);
 
 router.get("/person", (req, res) => {

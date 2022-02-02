@@ -8,7 +8,7 @@ const dbFilePath = "./db/database.db";
 const companyRouter = companyRouter(Singleton.connect(dbFilePath));
 const personRouter = personRouter(Singleton.connect(dbFilePath));
 
-app.use("/person/", personRooter);
+app.use("/person/", personRouter);
 app.use("/company/", companyRouter);
 
 app.listen(3000);
