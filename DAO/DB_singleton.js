@@ -15,13 +15,7 @@ class DB {
         }
         console.log("Connected to the SQlite database.");
       });
-    }
-  }
-  static connect(dbFilePath) {
-    if (DB.instance) {
-      return DB.instance;
-    } else {
-      return new Connection(dbFilePath);
+      return this;
     }
   }
 }
