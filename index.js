@@ -5,10 +5,10 @@ import connection from "./DAO/DB_singleton.js";
 
 const app = express();
 const dbFilePath = "./db/database.db";
-const companyRouter = companyRouter(new connection(dbFilePath));
-const personRouter = personRouter(new connection(dbFilePath));
+const company = companyRouter(new connection(dbFilePath));
+const person = personRouter(new connection(dbFilePath));
 
-app.use("/person/", personRouter);
-app.use("/company/", companyRouter);
+app.use("/person/", company);
+app.use("/company/", person);
 
 app.listen(3000);
