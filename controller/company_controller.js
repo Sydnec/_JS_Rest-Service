@@ -1,14 +1,17 @@
 import DAO from "../DAO/DAO.js";
 
-function getAll() {}
+function getAll() {
+  DAO.executeRequest("SELECT * FROM company", (param) => {
+    console.log(param);
+  });
+}
 function get(id) {
-  DAO.fetchData("*", "company", "ID = " + id + ";", print);
+  DAO.fetchData("*", "company", "id	 = " + id, (param) => {
+    console.log(param);
+  });
 }
 function add() {}
 function update() {}
 function del() {}
-function print(blabla) {
-  console.log(blabla);
-}
 
 export default { getAll, add, get, update, del };

@@ -19,5 +19,6 @@ class Singleton {
     }
   }
 }
+
 Singleton.instance = null;
 export default Singleton;

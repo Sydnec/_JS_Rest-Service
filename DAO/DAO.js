@@ -1,26 +1,26 @@
-import connection from "./Singleton.js";
+import Singleton from "./Singleton.js";
 
-const dbFilePath = "../db/database.db";
-new connection(dbFilePath);
+const dbFilePath = "./db/database.db";
+const connection = new Singleton(dbFilePath);
 
 // https://gist.github.com/keyurgolani/6f5f78f8e2ad3a63c1321baa938a615c#file-dao-js
 function fetchData(selectOption, tableName, requestParameters, processData) {
   let request = "SELECT " + selectOption + " FROM " + tableName;
   if (requestParameters !== undefined) {
-    request += "WHERE " + requestParameters;
+    request += " WHERE " + requestParameters;
   }
-  connection.db.run(request, function (error, rows) {
+  connection.db.get(request, function (error, row) {
     if (error) {
       throw error;
     } else {
-      processData(rows);
+      processData(request + row);
     }
   });
 }
 function executeRequest(sqlString, processResult) {
-  connection.db.run(sqlString, function (error, rows) {
-    if (error) {
-      throw error;
+  connection.db.run(sqlString, function (err, rows) {
+    if (err) {
+      throw err;
     } else {
       processResult(rows);
     }
