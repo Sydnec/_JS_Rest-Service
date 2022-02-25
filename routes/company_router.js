@@ -14,6 +14,7 @@ router.post("/:id", (req, res) => {
 });
 router.get("/:id", (req, res) => {
   company_controller.get(req.params.id);
+  res.send("ok");
 });
 router.put("/:id", (req, res) => {
   company_controller.update(req.params.id);
