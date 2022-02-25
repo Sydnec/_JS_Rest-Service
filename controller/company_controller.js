@@ -1,8 +1,14 @@
-import DAO from "../DAO/DAO.js"
+import DAO from "../DAO/DAO.js";
 
-function add(){
-
+function getAll() {}
+function get(id) {
+  DAO.fetchData("*", "company", "ID = " + id + ";", print);
 }
-function get()
-function update()
-function delete()
+function add() {}
+function update() {}
+function del() {}
+function print(blabla) {
+  console.log(blabla);
+}
+
+export default { getAll, add, get, update, del };

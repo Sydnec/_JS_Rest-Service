@@ -1,6 +1,7 @@
-import Singleton from "./Singleton.js";
+import connection from "./Singleton.js";
 
-const connection = new Singleton("../db/database.db");
+const dbFilePath = "../db/database.db";
+new connection(dbFilePath);
 
 // https://gist.github.com/keyurgolani/6f5f78f8e2ad3a63c1321baa938a615c#file-dao-js
 function fetchData(selectOption, tableName, requestParameters, processData) {
@@ -52,4 +53,4 @@ function updateData(tableName, setParameters, whereParameters, processUpdate) {
   });
 }
 
-export { executeRequest, fetchData, insertData, updateData };
+export default { executeRequest, fetchData, insertData, updateData };
