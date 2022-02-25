@@ -7,11 +7,9 @@ const router = new express.Router();
 
 router.get("/", person_controller.getAll());
 
-router
-  .route("/:id")
-  .post(person_controller.add(res.params.id))
-  .get(person_controller.get(res.params.id))
-  .put(person_controller.update(res.params.id))
-  .delete(person_controller.delete(res.params.id));
+router.post("/:id", person_controller.add());
+router.get("/:id", person_controller.get());
+router.put("/:id", person_controller.update());
+router.delete("/:id", person_controller.delete());
 
 export default router;

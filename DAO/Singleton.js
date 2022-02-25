@@ -1,13 +1,13 @@
 import sqlite3 from "sqlite3";
 
 // https://stackoverflow.com/questions/59626230/how-to-create-singleton-classes-in-javascript
-class DB {
+class Singleton {
   constructor(dbFilePath) {
-    if (DB.instance) {
+    if (Singleton.instance) {
       console.warn("Already connected to the SQlite database !");
       return DB.instance;
     } else {
-      DB.instance = this;
+      Singleton.instance = this;
       // create the connection with database
       this.db = new sqlite3.Database(dbFilePath, (err) => {
         if (err) {
@@ -19,5 +19,5 @@ class DB {
     }
   }
 }
-DB.instance = null;
-export default DB;
+Singleton.instance = null;
+export default Singleton;

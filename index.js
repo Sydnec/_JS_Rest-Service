@@ -1,7 +1,7 @@
 import express from "express";
 import personRouter from "./routes/person_router.js";
 import companyRouter from "./routes/company_router.js";
-import connection from "./DAO/DB_singleton.js";
+import connection from "./DAO/Singleton.js";
 
 const app = express();
 const dbFilePath = "./db/database.db";
