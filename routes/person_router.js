@@ -3,11 +3,20 @@ import person_controller from "../controller/person_controller.js";
 
 const router = new express.Router();
 
-// router.get("/", person_controller.getAll());
-
-// router.post("/:id", person_controller.add());
-// router.get("/:id", person_controller.get());
-// router.put("/:id", person_controller.update());
-// router.delete("/:id", person_controller.delete());
+router.get("/", (req, res) => {
+  person_controller.getAll(req, res);
+});
+router.post("/:id/:name/:firstName", (req, res) => {
+  person_controller.add(req, res);
+});
+router.get("/:id", (req, res) => {
+  person_controller.get(req, res);
+});
+router.put("/:id/:set", (req, res) => {
+  person_controller.update(req, res);
+});
+router.delete("/:id", (req, res) => {
+  person_controller.del(req, res);
+});
 
 export default router;
