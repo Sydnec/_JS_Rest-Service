@@ -4,8 +4,6 @@ import companyRouter from "./routes/company_router.js";
 import token from "./token.js";
 import cookieParser from "cookie-parser";
 
-// https://lo-victoria.com/build-rest-api-with-nodejs-design-and-plan-restful-api
-
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());

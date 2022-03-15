@@ -3,8 +3,6 @@ import company_controller from "../controller/company_controller.js";
 
 const router = new express.Router();
 
-// Codes : https://www.restapitutorial.com/lessons/httpmethods.html
-
 router.get("/", (req, res) => {
   company_controller.getAll(req, res);
 });

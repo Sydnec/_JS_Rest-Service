@@ -3,7 +3,6 @@ import Singleton from "./Singleton.js";
 const dbFilePath = "./db/database.db";
 const connection = new Singleton(dbFilePath);
 
-// https://gist.github.com/keyurgolani/6f5f78f8e2ad3a63c1321baa938a615c#file-dao-js
 function fetchData(selectOption, tableName, requestParameters, processData) {
   let request = "SELECT " + selectOption + " FROM " + tableName;
   if (requestParameters !== undefined) {
