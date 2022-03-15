@@ -25,8 +25,14 @@ function get(req, res) {
 }
 function add(req, res) {
   DAO.insertData(
-    "person (name, firstName)",
-    "('" + req.params.name + "', '" + req.params.firstName + "')",
+    "person (company_id, name, first_name)",
+    "('" +
+      req.params.comanyId +
+      "', '" +
+      req.params.name +
+      "', '" +
+      req.params.firstName +
+      "')",
     (err, param) => {
       if (err) {
         res.status(400).json({ error: err.message });

@@ -6,7 +6,7 @@ const router = new express.Router();
 router.get("/", (req, res) => {
   person_controller.getAll(req, res);
 });
-router.post("/:id/:name/:firstName", (req, res) => {
+router.post("/:comanyId/:name/:firstName", (req, res) => {
   person_controller.add(req, res);
 });
 router.get("/:id", (req, res) => {

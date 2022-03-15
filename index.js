@@ -9,10 +9,10 @@ import cookieParser from "cookie-parser";
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.locals.basedir = "./public";
 
 app.get("/", (req, res) => {
-  //----------MARKDOWN-----------
-  res.send("<h1>EN COURS DE DEVELOPPEMENT ...</h1>");
+  res.send("read the Readme.md");
 });
 
 app.post("/auth", (req, res) => {
