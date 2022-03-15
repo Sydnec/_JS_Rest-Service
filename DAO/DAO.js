@@ -9,30 +9,30 @@ function fetchData(selectOption, tableName, requestParameters, processData) {
   if (requestParameters !== undefined) {
     request += " WHERE " + requestParameters;
   }
-  connection.db.get(request, function (err, row) {
+  connection.db.all(request, function (err, row) {
     if (err) {
       throw err;
     } else {
-      processData(row);
+      processData(err, row);
     }
   });
 }
 function executeRequest(sqlString, processResult) {
-  connection.db.run(sqlString, function (err, rows) {
+  connection.db.all(sqlString, function (err, rows) {
     if (err) {
       throw err;
     } else {
-      processResult(rows);
+      processResult(err, rows);
     }
   });
 }
 function insertData(tableName, requestParameters, processInsert) {
-  let request = "INSERT INTO " + tableName + " SET " + requestParameters;
+  let request = "INSERT INTO " + tableName + " VALUES " + requestParameters;
   connection.db.run(request, function (err, rows) {
     if (err) {
       throw err;
     } else {
-      processInsert(rows);
+      processInsert(err, rows);
     }
   });
 }
@@ -48,7 +48,7 @@ function updateData(tableName, setParameters, whereParameters, processUpdate) {
     if (err) {
       throw err;
     } else {
-      processUpdate(rows);
+      processUpdate(err, rows);
     }
   });
 }

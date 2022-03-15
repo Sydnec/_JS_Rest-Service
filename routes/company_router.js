@@ -6,21 +6,19 @@ const router = new express.Router();
 // Codes : https://www.restapitutorial.com/lessons/httpmethods.html
 
 router.get("/", (req, res) => {
-  company_controller.getAll();
-  res.send("Ok");
+  company_controller.getAll(req, res);
 });
-router.post("/:id", (req, res) => {
-  company_controller.add(req.params.id);
+router.post("/:name/:city", (req, res) => {
+  company_controller.add(req, res);
 });
 router.get("/:id", (req, res) => {
-  company_controller.get(req.params.id);
-  res.send("ok");
+  company_controller.get(req, res);
 });
-router.put("/:id", (req, res) => {
-  company_controller.update(req.params.id);
+router.put("/:id/:set", (req, res) => {
+  company_controller.update(req, res);
 });
 router.delete("/:id", (req, res) => {
-  company_controller.del(req.params.id);
+  company_controller.del(req, res);
 });
 
 export default router;
